@@ -1,12 +1,7 @@
 package br.com.alura.carteira.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import javax.validation.Valid;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,9 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.alura.carteira.dto.TransacaoDto;
 import br.com.alura.carteira.dto.TransacaoFormDto;
-import br.com.alura.carteira.modelo.Transacao;
 import br.com.alura.carteira.service.TransacaoService;
-import br.com.alura.carteira.service.UsuarioService;
 
 @RestController
 @RequestMapping("/transacoes")

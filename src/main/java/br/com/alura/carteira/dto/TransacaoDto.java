@@ -1,8 +1,8 @@
 package br.com.alura.carteira.dto;
 
 import java.math.BigDecimal;
+
 import br.com.alura.carteira.modelo.TipoTransacao;
-import br.com.alura.carteira.modelo.Usuario;
 import lombok.Getter;
 import lombok.Setter;
 
