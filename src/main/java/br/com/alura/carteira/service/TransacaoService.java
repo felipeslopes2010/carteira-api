@@ -14,24 +14,27 @@ import br.com.alura.carteira.repository.TransacaoRepository;
 
 @Service
 public class TransacaoService {
-	
+
 	@Autowired
 	TransacaoRepository transacaoRepository;
+
 	private ModelMapper modelMapper = new ModelMapper();
-	
+
 	public Page<TransacaoDto> listar(Pageable paginacao) {
-		
-		Page<Transacao> transacoes = transacaoRepository.findAll(paginacao);	
+
+		Page<Transacao> transacoes = transacaoRepository.findAll(paginacao);
 		return transacoes.map(t -> modelMapper.map(t, TransacaoDto.class));
+
 	}
 
 	@Transactional
 	public TransacaoDto cadastrar(TransacaoFormDto dto) {
-		
-		Transacao transacao = modelMapper.map(dto, Transacao.class);	
+
+		Transacao transacao = modelMapper.map(dto, Transacao.class);
 		transacao.setId(null);
-		
+
 		transacaoRepository.save(transacao);
 		return modelMapper.map(transacao, TransacaoDto.class);
+
 	}
 }

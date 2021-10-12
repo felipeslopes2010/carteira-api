@@ -30,6 +30,7 @@ public class Transacao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String ticker;
 	private BigDecimal preco;
 	private Integer quantidade;
@@ -40,6 +41,5 @@ public class Transacao {
 	
 	@ManyToOne
 	private Usuario usuario;
-	
-	
+
 }

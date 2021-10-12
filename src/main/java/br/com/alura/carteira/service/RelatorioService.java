@@ -13,9 +13,11 @@ public class RelatorioService {
 
 	@Autowired
 	private TransacaoRepository repository;
-	
+
 	public List<ItemCarteiraDto> relatorioCarteiraDeInvestimentos() {
+
 		return repository.relatorioCarteiraDeInvestimentos();
+
 	}
-	
+
 }

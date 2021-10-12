@@ -16,26 +16,29 @@ import br.com.alura.carteira.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-	
+
 	@Autowired
 	UsuarioRepository usuarioRepository;
+
 	private ModelMapper modelMapper = new ModelMapper();
-	
-	public Page<UsuarioDto> listar(Pageable paginacao) {	
+
+	public Page<UsuarioDto> listar(Pageable paginacao) {
+		
 		Page<Usuario> usuarios = usuarioRepository.findAll(paginacao);
 		return usuarios.map(t -> modelMapper.map(t, UsuarioDto.class));
+		
 	}
 
-	
 	@Transactional
 	public UsuarioDto cadastrar(UsuarioFormDto dto) {
-		
-		Usuario usuario = modelMapper.map(dto, Usuario.class);	
-		
+
+		Usuario usuario = modelMapper.map(dto, Usuario.class);
+
 		String senha = new Random().nextInt(999999) + "";
 		usuario.setSenha(senha);
-		
+
 		usuarioRepository.save(usuario);
 		return modelMapper.map(usuario, UsuarioDto.class);
+		
 	}
 }

@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 public class UsuarioFormDto {
 
-	@NotBlank
+	@NotBlank(message = "deve ser informado!")
 	private String nome;
 	@NotBlank
 	private String login;
-	
+
 }

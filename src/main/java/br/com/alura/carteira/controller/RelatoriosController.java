@@ -13,13 +13,14 @@ import br.com.alura.carteira.service.RelatorioService;
 @RestController
 @RequestMapping("/relatorios")
 public class RelatoriosController {
-	
+
 	@Autowired
 	RelatorioService service;
-	
+
 	@GetMapping("/carteira")
-	public List<ItemCarteiraDto> relatorioCarteiraDeInvestimentos () {
-		return service.relatorioCarteiraDeInvestimentos();
+	public List<ItemCarteiraDto> relatorioCarteiraDeInvestimentos() {
 		
+		return service.relatorioCarteiraDeInvestimentos();
+
 	}
 }

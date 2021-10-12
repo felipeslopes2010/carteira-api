@@ -25,16 +25,19 @@ import br.com.alura.carteira.service.UsuarioService;
 public class UsuarioController {
 	
 	@Autowired
-	private UsuarioService service;
+	UsuarioService service;
 
 	@GetMapping
 	public Page<UsuarioDto> listar(@PageableDefault(size = 10) Pageable paginacao) {
+		
 		return service.listar(paginacao);
+		
 	}
 
 	@PostMapping
 	public ResponseEntity<UsuarioDto> cadastrar(@RequestBody @Valid UsuarioFormDto dto,
 			UriComponentsBuilder uriBuilder) {
+		
 		UsuarioDto usuarioDto = service.cadastrar(dto);
 		
 		URI uri = uriBuilder
@@ -42,5 +45,6 @@ public class UsuarioController {
 				.buildAndExpand(usuarioDto.getId())
 				.toUri();
 		return ResponseEntity.created(uri).body(usuarioDto);
+		
 	}
 }

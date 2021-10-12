@@ -5,10 +5,9 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class ItemCarteiraDto {
+public class Erro400Dto {
 
-	private String ticker;
-	private Long quantidade;
-	private Double percentual;
+	private String campo;
+	private String mensagem;
 	
 }

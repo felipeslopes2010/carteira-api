@@ -25,16 +25,19 @@ import br.com.alura.carteira.service.TransacaoService;
 public class TransacaoController {
 
 	@Autowired
-	private TransacaoService service;
+	TransacaoService service;
 
 	@GetMapping
 	public Page<TransacaoDto> listar(@PageableDefault(size = 10) Pageable paginacao) {
+		
 		return service.listar(paginacao);
+		
 	}
 
 	@PostMapping
 	public ResponseEntity<TransacaoDto> cadastrar(@RequestBody @Valid TransacaoFormDto dto,
 			UriComponentsBuilder uriBuilder) {
+		
 		TransacaoDto transacaoDto = service.cadastrar(dto);
 		
 		URI uri = uriBuilder
@@ -42,5 +45,6 @@ public class TransacaoController {
 				.buildAndExpand(transacaoDto.getId())
 				.toUri();
 		return ResponseEntity.created(uri).body(transacaoDto);
+		
 	}
 }
