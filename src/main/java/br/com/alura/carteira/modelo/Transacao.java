@@ -32,9 +32,9 @@ public class Transacao {
 	private Long id;
 	
 	private String ticker;
+	private LocalDate data;
 	private BigDecimal preco;
 	private Integer quantidade;
-	private LocalDate data;
 	
 	@Enumerated(EnumType.STRING)
 	private TipoTransacao tipo;
