@@ -35,6 +35,7 @@ class TransacaoServiceTest {
 	
 	@Test
 	void deveriaCadastrarUmaTransacao() {
+		
 		TransacaoFormDto formDto = new TransacaoFormDto(
 				"ITSA4",
 				new BigDecimal("10.45"),
@@ -50,10 +51,12 @@ class TransacaoServiceTest {
 		assertEquals(formDto.getPreco(), dto.getPreco());
 		assertEquals(formDto.getQuantidade(), dto.getQuantidade());
 		assertEquals(formDto.getTipo(), dto.getTipo());
+		
 	}
 	
 	@Test
 	void naoDeveriaCadastrarUmaTransacaoComUsuarioInexistente() {
+		
 		TransacaoFormDto formDto = new TransacaoFormDto(
 				"ITSA4",
 				new BigDecimal("10.45"),
@@ -69,6 +72,6 @@ class TransacaoServiceTest {
 	
 		
 		assertThrows(IllegalArgumentException.class, () -> service.cadastrar(formDto));
+		
 	}
-
 }
