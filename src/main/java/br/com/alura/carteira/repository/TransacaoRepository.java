@@ -10,12 +10,12 @@ import br.com.alura.carteira.modelo.Transacao;
 
 public interface TransacaoRepository extends JpaRepository<Transacao, Long> {
 
-	@Query("select new br.com.alura.carteira.dto.ItemCarteiraDto( "
+	@Query("SELECT new br.com.alura.carteira.dto.ItemCarteiraDto( "
 			+ "t.ticker, "
-			+ "sum(t.quantidade), "
-			+ "sum(t.quantidade) * 1.0 / (select sum(t2.quantidade) from Transacao t2) * 1.0) "
+			+ "SUM(CASE WHEN(t.tipo = 'COMPRA') THEN t.quantidade ELSE (t.quantidade * -1) END), "
+			+ "(SELECT SUM(CASE WHEN(t2.tipo = 'COMPRA') THEN t2.quantidade ELSE (t2.quantidade * -1) END) FROM Transacao t2))"
 			+ "from Transacao t "
-			+ "group by t.ticker")
+			+ "GROUP BY t.ticker")
 	List<ItemCarteiraDto> relatorioCarteiraDeInvestimentos();
 	
 	}
