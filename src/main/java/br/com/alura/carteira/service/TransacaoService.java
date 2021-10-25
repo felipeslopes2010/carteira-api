@@ -28,8 +28,9 @@ public class TransacaoService {
 	@Autowired
 	UsuarioRepository usuarioRepository;
 
-	private ModelMapper modelMapper = new ModelMapper();
-
+	@Autowired
+	private ModelMapper modelMapper;
+	
 	public Page<TransacaoDto> listar(Pageable paginacao) {
 
 		return repository

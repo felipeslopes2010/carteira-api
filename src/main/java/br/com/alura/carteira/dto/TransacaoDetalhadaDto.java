@@ -11,4 +11,5 @@ public class TransacaoDetalhadaDto extends TransacaoDto {
 
 	private LocalDate data;
 	private UsuarioDto usuario;
+	
 }
