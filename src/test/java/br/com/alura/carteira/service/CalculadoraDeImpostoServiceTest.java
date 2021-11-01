@@ -24,7 +24,7 @@ class CalculadoraDeImpostoServiceTest {
 				preco,
 				quantidade,
 				tipo,
-				new Usuario(1l, "Rafaela", "rafa@email.com.br", "123456")
+				new Usuario(1l, "Rafaela", "rafa@email.com.br", "123456", null)
 				);
 		return transacao;
 	}

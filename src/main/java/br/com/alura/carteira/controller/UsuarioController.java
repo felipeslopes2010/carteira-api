@@ -43,13 +43,13 @@ public class UsuarioController {
 	public ResponseEntity<UsuarioDto> cadastrar(@RequestBody @Valid UsuarioFormDto dto,
 			UriComponentsBuilder uriBuilder) {
 		
-		UsuarioDto usuarioDto = service.cadastrar(dto);
+		UsuarioDto cadastro = service.cadastrar(dto);
 		
-		URI uri = uriBuilder
+		URI endereco = uriBuilder
 				.path("/usuarios/{id}")
-				.buildAndExpand(usuarioDto.getId())
+				.buildAndExpand(cadastro.getId())
 				.toUri();
-		return ResponseEntity.created(uri).body(usuarioDto);
+		return ResponseEntity.created(endereco).body(cadastro);
 		
 	}
 }
