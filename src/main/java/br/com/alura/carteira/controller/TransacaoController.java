@@ -29,6 +29,7 @@ import br.com.alura.carteira.modelo.Usuario;
 import br.com.alura.carteira.service.TransacaoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 @RequestMapping("/transacoes")
@@ -40,7 +41,7 @@ public class TransacaoController {
 
 	@GetMapping
 	@ApiOperation("Lista Transacoes")
-	public Page<TransacaoDto> listar(@PageableDefault(size = 10) Pageable paginacao, @AuthenticationPrincipal Usuario logado) {
+	public Page<TransacaoDto> listar(@PageableDefault(size = 10) Pageable paginacao, @ApiIgnore @AuthenticationPrincipal Usuario logado) {
 		
 		return service.listar(paginacao, logado);
 		
@@ -63,7 +64,7 @@ public class TransacaoController {
 	
 	@PutMapping
 	@ApiOperation("Atualiza Transacao")
-	public ResponseEntity<TransacaoDto> atualizar(@RequestBody @Valid AtualizacaoTransacaoFormDto dto, @AuthenticationPrincipal Usuario logado) {
+	public ResponseEntity<TransacaoDto> atualizar(@RequestBody @Valid AtualizacaoTransacaoFormDto dto, @ApiIgnore @AuthenticationPrincipal Usuario logado) {
 		
 		TransacaoDto atualizada = service.atualizar(dto, logado);
 		
@@ -73,7 +74,7 @@ public class TransacaoController {
 	
 	@DeleteMapping("/{id}")
 	@ApiOperation("Remove Transacao")
-	public ResponseEntity<TransacaoDto> remover(@PathVariable @NotNull Long id, @AuthenticationPrincipal Usuario logado) {
+	public ResponseEntity<TransacaoDto> remover(@PathVariable @NotNull Long id, @ApiIgnore @AuthenticationPrincipal Usuario logado) {
 		
 		service.remover(id, logado);
 		
@@ -83,7 +84,7 @@ public class TransacaoController {
 	
 	@GetMapping("/{id}")
 	@ApiOperation("Detalha Transacao")
-	public ResponseEntity<TransacaoDetalhadaDto> detalhar(@PathVariable @NotNull Long id, @AuthenticationPrincipal Usuario logado) {
+	public ResponseEntity<TransacaoDetalhadaDto> detalhar(@PathVariable @NotNull Long id, @ApiIgnore @AuthenticationPrincipal Usuario logado) {
 		
 		TransacaoDetalhadaDto dto = service.detalhar(id, logado);
 		

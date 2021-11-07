@@ -37,6 +37,9 @@ class TransacaoServiceTest {
 	@Mock
 	private ModelMapper modelMapper;
 	
+	@Mock
+	private CalculadoraDeImpostoService calculadoraDeImpostoService;
+	
 	@InjectMocks
 	private TransacaoService service;
 	
@@ -85,7 +88,8 @@ class TransacaoServiceTest {
 				transacao.getTicker(),
 				transacao.getPreco(),
 				transacao.getQuantidade(),
-				transacao.getTipo()
+				transacao.getTipo(),
+				BigDecimal.ZERO
 				));
 		
 		TransacaoDto dto = service.cadastrar(formDto, logado);
