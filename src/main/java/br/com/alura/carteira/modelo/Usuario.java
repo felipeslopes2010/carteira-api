@@ -65,7 +65,6 @@ public class Usuario implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
 		return login;
 	}
 
